@@ -1,25 +1,22 @@
-import { Menu } from '@headlessui/react';
-import { Logout, More, MoreVert } from '@mui/icons-material';
-import { Avatar, Button, Paper, Typography } from '@mui/material';
-import LogoutButton from './LogoutButton';
-import { useUser } from '@supabase/auth-helpers-react';
+import { Menu } from "@headlessui/react";
+import { Logout, More, MoreVert } from "@mui/icons-material";
+import { Avatar, Button, Paper, Typography } from "@mui/material";
+import LogoutButton from "./LogoutButton";
 
 const UserProfileInfo = () => {
-  const user = useUser();
-
   // const { name, avatat_url } = user?.user_metadata!;
 
   return (
     <Menu>
-      <Paper className='hidden cursor-pointer select-none fixed   top-[40px] right-[40px] rounded-2xl md:inline-flex'>
-        <Menu.Button as='div' className='flex items-center space-x-4 px-4 py-2'>
-          <Typography variant='body1'>{user?.user_metadata.name}</Typography>
-          <Avatar src={user?.user_metadata.avatar_url} />
+      <Paper className="fixed right-[40px] top-[40px] hidden   cursor-pointer select-none rounded-2xl md:inline-flex">
+        <Menu.Button as="div" className="flex items-center space-x-4 px-4 py-2">
+          <Typography variant="body1">Surya Ashish</Typography>
+          <Avatar>SA</Avatar>
           <MoreVert />
         </Menu.Button>
-        <Menu.Items className='absolute right-0 mt-[60px] shadow-lg'>
-          <Menu.Item as={'div'} className=''>
-            <Paper className='w-[300px] flex flex-col items-center py-2'>
+        <Menu.Items className="absolute right-0 mt-[60px] shadow-lg">
+          <Menu.Item as={"div"} className="">
+            <Paper className="flex w-[300px] flex-col items-center py-2">
               <LogoutButton />
             </Paper>
           </Menu.Item>

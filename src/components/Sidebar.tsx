@@ -3,10 +3,10 @@ import { Close } from '@mui/icons-material';
 import { IconButton, Typography } from '@mui/material';
 import React from 'react';
 import { useSetRecoilState } from 'recoil';
-import { sidebarAtom } from '~/atoms/sidebarAtom';
+import { sideBarAtom } from '~/atoms/sideBarAtom';
 
 const Sidebar = React.forwardRef((_, ref) => {
-  const setSidebarState = useSetRecoilState(sidebarAtom);
+  const setSidebarState = useSetRecoilState(sideBarAtom);
   const handleSidebarClose = () => {
     setSidebarState({ open: false });
   };

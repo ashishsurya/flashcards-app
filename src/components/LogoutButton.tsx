@@ -1,21 +1,15 @@
-import { Logout } from '@mui/icons-material';
-import { Button } from '@mui/material';
-import { useSupabaseClient } from '@supabase/auth-helpers-react';
+import { Logout } from "@mui/icons-material";
+import { Button } from "@mui/material";
 
 const LogoutButton = () => {
-  const supabase = useSupabaseClient();
-
-  const handleLogout = async () => {
-    const { error } = await supabase.auth.signOut();
-
-    // TODO : handle error case
-  };
+  // TODO : to be implented
+  const handleLogout = () => "logout";
 
   return (
     <Button
-      onClick={async () => await handleLogout()}
-      className='w-full  normal-case text-red-600 font-normal text-base'
-      startIcon={<Logout className='rotate-180' />}
+      onClick={handleLogout}
+      className="w-full  text-base font-normal normal-case text-red-600"
+      startIcon={<Logout className="rotate-180" />}
     >
       Log Out
     </Button>
