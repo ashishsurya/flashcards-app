@@ -29,17 +29,17 @@ export default function NavBar() {
           Flashcards
         </Typography>
       </div>
-      <Menu>
+      <Menu as="div" className={"md:hidden"}>
         <Menu.Button>
-          <Avatar className="cursor-pointer md:hidden">SA</Avatar>
-          <Menu.Items className="absolute right-0  mt-[20px] shadow-lg">
-            <Menu.Item as={"div"} className="focus:border-none">
-              <Paper className="flex w-[300px] flex-col items-center py-2">
-                <LogoutButton />
-              </Paper>
-            </Menu.Item>
-          </Menu.Items>
+          <Avatar className="cursor-pointer ">SA</Avatar>
         </Menu.Button>
+        <Menu.Items className="absolute right-0  mt-[20px] shadow-lg">
+          <Menu.Item as={"div"} className="focus:border-none">
+            <Paper className="flex w-[300px] flex-col items-center py-2">
+              <LogoutButton />
+            </Paper>
+          </Menu.Item>
+        </Menu.Items>
       </Menu>
     </div>
   );
