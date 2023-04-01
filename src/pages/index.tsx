@@ -1,29 +1,25 @@
-import { Modal } from "@mui/material";
-import Head from "next/head";
-import { useRecoilState, useSetRecoilState } from "recoil";
-import { sideBarAtom } from "~/atoms/sideBarAtom";
-import NavBar from "~/components/NavBar";
-import Sidebar from "~/components/Sidebar";
-import UserProfileInfo from "~/components/UserProfileInfo";
+import { SignInButton, useUser } from "@clerk/nextjs";
+import AppWrapper from "~/components/AppWrapper";
+import LoadingSpinner from "~/components/LoadingSpinner";
 
-export default function Home() {
-  const [sidebarState,setSidebarState] = useRecoilState(sideBarAtom);
+const Home = () => {
+  const {  isLoaded, isSignedIn } = useUser();
 
-  const handleSidebarClose = () => {
-    setSidebarState({ open: false });
-  };
+  if (!isLoaded)
+    return (
+      <div className="flex h-screen items-center justify-center">
+        <LoadingSpinner size={40} />
+      </div>
+    );
 
-  return (
-    <div className="flex min-h-screen flex-col md:flex-row ">
-      <Head>
-        <title>Flashcards</title>
-      </Head>
-      <NavBar />
-      <UserProfileInfo />
-      <Modal open={sidebarState.open} onClose={handleSidebarClose}>
-        <Sidebar />
-      </Modal>
-      <div className="flex-1 pt-[56px] md:pl-[185px]"></div>
-    </div>
-  );
-}
+  if (!isSignedIn)
+    return (
+      <div className="flex h-screen items-center justify-center">
+        <SignInButton />
+      </div>
+    );
+
+  return <AppWrapper />;
+};
+
+export default Home;

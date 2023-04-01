@@ -3,10 +3,14 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { ThemeProvider, createTheme, responsiveFontSizes } from "@mui/material";
 import type { AppProps } from "next/app";
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import { RecoilRoot } from "recoil";
 import "./globals.css";
+import { api } from "~/utils/api";
+import { ClerkProvider } from "@clerk/nextjs";
+import Head from "next/head";
+import { Toaster } from "react-hot-toast";
+import "./globals.css";
+import { dark } from "@clerk/themes";
 
 var theme = createTheme({
   typography: {
@@ -16,13 +20,22 @@ var theme = createTheme({
 
 theme = responsiveFontSizes(theme);
 
-export default function App({ Component, pageProps }: AppProps) {
+function App({ Component, pageProps }: AppProps) {
   return (
-    <RecoilRoot>
-      <ThemeProvider theme={theme}>
-        <ToastContainer />
-        <Component {...pageProps} />
-      </ThemeProvider>
-    </RecoilRoot>
+    <ClerkProvider {...pageProps} appearance={{ baseTheme: dark }}>
+      <Head>
+        <title>Flashcards</title>
+        <meta name="description" content="💭" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      <RecoilRoot>
+        <ThemeProvider theme={theme}>
+          <Toaster position="bottom-center" />
+          <Component {...pageProps} />
+        </ThemeProvider>
+      </RecoilRoot>
+    </ClerkProvider>
   );
 }
+
+export default api.withTRPC(App);

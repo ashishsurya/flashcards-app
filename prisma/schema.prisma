@@ -1,6 +1,6 @@
 datasource db {
-  provider = "mysql"
-  url      = env("DATABASE_URL")
+  provider     = "mysql"
+  url          = env("DATABASE_URL")
   relationMode = "prisma"
 }
 
@@ -9,9 +9,33 @@ generator client {
 }
 
 model Star {
-  id              Int       @default(autoincrement()) @id
-  createdAt       DateTime  @default(now())
-  updatedAt       DateTime  @updatedAt
-  name            String    @db.VarChar(255)
-  constellation   String    @db.VarChar(255)
+  id            Int      @id @default(autoincrement())
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  name          String   @db.VarChar(255)
+  constellation String   @db.VarChar(255)
+}
+
+model Deck {
+  id         String      @id @default(uuid())
+  createdAt  DateTime    @default(now()) @map("created_at")
+  updatedAt  DateTime    @updatedAt @map("updated_at")
+  authorId   String      @map("author_id")
+  title      String
+  flashcards Flashcard[]
+
+  @@index([authorId])
+}
+
+model Flashcard {
+  id        String   @id @default(uuid())
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+  authorId  String   @map("author_id")
+  question  String
+  answer    String
+  deckId    String
+  deck      Deck     @relation(fields: [deckId], references: [id])
+
+  @@index([deckId])
 }
