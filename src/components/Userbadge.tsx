@@ -9,10 +9,10 @@ const Userbadge = () => {
     <Menu as="div" className={"absolute right-10 top-10 h-12"}>
       <Menu.Button
         className={
-          "flex items-center  justify-between  rounded-lg py-2 sm:gap-4 sm:bg-[--bg-level-4] sm:px-4"
+          "flex items-center  justify-between  rounded-lg py-2 md:gap-4 md:bg-[--bg-level-4] md:px-4"
         }
       >
-        <p className="hidden font-light sm:inline-flex">{user?.fullName}</p>
+        <p className="hidden font-light md:inline-flex">{user?.fullName}</p>
         <img
           src={user?.profileImageUrl}
           alt=""

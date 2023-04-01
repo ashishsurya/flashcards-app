@@ -10,7 +10,10 @@ export default {
         md: "768px",
         lg: "1024px",
       },
+      fontFamily: {
+        rubik: "Rubik",
+      },
     },
   },
-  plugins: [],
+  plugins: [require("flowbite-typography")],
 } satisfies Config;
