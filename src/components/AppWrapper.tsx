@@ -1,15 +1,22 @@
 /* eslint-disable @next/next/no-img-element */
+import { useRecoilValue } from "recoil";
+import { currentDeckAtom } from "~/atoms/currentDeckAtom";
 import { DecksContainer } from "./DecksContainer";
+import SingleDeckView from "./SingleDeckView";
 import Userbadge from "./Userbadge";
 
 const AppWrapper = () => {
+  const currentDeck = useRecoilValue(currentDeckAtom);
+
   return (
     <div className="min-h-screen">
       <Userbadge />
-      {/* <pre>{JSON.stringify({ name: user?.fullName }, null, 2)}</pre>
-      <img src={user?.profileImageUrl} alt="" width={100} height={100} /> */}
 
-      <DecksContainer />
+      {currentDeck.deckId ? (
+        <SingleDeckView deckId={currentDeck.deckId} />
+      ) : (
+        <DecksContainer />
+      )}
     </div>
   );
 };

@@ -26,4 +26,13 @@ const LoadingSpinner = ({ size }: { size?: number }) => {
   );
 };
 
+export const LoadingPage = () => {
+  return (
+    <div className="absolute top-0 right-0 flex h-full w-full items-center justify-center">
+      <LoadingSpinner size={60} />
+    </div>
+  );
+};
+
 export default LoadingSpinner;
+
