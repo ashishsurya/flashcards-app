@@ -1,5 +1,6 @@
 import { useSetRecoilState } from "recoil";
 import { currentDeckAtom } from "~/atoms/currentDeckAtom";
+import { newDeckModalAtom } from "~/atoms/newDeckModalState";
 import { api } from "~/utils/api";
 import { LoadingPage } from "./LoadingSpinner";
 import PageHeader from "./PageHeader";
@@ -8,6 +9,7 @@ import PageLayout from "./PageLayout";
 export const DecksContainer = () => {
   const { data, isLoading } = api.deck.getAllDecks.useQuery();
   const setCurrentDeck = useSetRecoilState(currentDeckAtom);
+  const setNewDeckModal = useSetRecoilState(newDeckModalAtom);
 
   if (isLoading) return <LoadingPage />;
 
@@ -28,12 +30,20 @@ export const DecksContainer = () => {
         </PageHeader>
       }
     >
-      <div className="grid grid-cols-1 gap-6 p-4 sm:grid-cols-2 md:grid-cols-4">
+      <div className="grid grid-cols-1  gap-6 p-4 sm:grid-cols-2 md:grid-cols-4">
+        <div
+          onClick={() => {
+            setNewDeckModal({ open: true });
+          }}
+          className="grid cursor-pointer place-items-center rounded-xl bg-[--bg-level-5] text-xl hover:bg-white hover:text-black  hover:shadow-lg md:p-10"
+        >
+          + Create a new deck
+        </div>
         {[...data].map((deck) => (
           <div
             key={deck.id}
             onClick={() => setCurrentDeck({ deckId: deck.id })}
-            className="grid cursor-pointer place-items-center border p-10 text-xl italic hover:bg-white hover:text-black"
+            className=" min-h-[200px] cursor-pointer flex items-center justify-center rounded-xl border text-xl italic hover:bg-white hover:text-black hover:shadow-lg md:p-10"
           >
             {deck.title}
           </div>

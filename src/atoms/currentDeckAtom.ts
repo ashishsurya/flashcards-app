@@ -1,4 +1,3 @@
-import type { Deck } from "@prisma/client";
 import { atom } from "recoil";
 
 export interface ICurrentDeckState {

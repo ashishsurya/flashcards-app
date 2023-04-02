@@ -1,9 +1,9 @@
-/* eslint-disable @next/next/no-img-element */
 import { useRecoilValue } from "recoil";
 import { currentDeckAtom } from "~/atoms/currentDeckAtom";
-import { DecksContainer } from "./DecksContainer";
+import { DecksContainer } from "./MultipleDecksView";
 import SingleDeckView from "./SingleDeckView";
 import Userbadge from "./Userbadge";
+import CreateNewDeckModal from "./CreateNewDeckModal";
 
 const AppWrapper = () => {
   const currentDeck = useRecoilValue(currentDeckAtom);
@@ -11,7 +11,7 @@ const AppWrapper = () => {
   return (
     <div className="min-h-screen">
       <Userbadge />
-
+      <CreateNewDeckModal />
       {currentDeck.deckId ? (
         <SingleDeckView deckId={currentDeck.deckId} />
       ) : (

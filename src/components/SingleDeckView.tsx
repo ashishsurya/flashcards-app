@@ -30,7 +30,17 @@ const SingleDeckView = ({ deckId }: { deckId: string }) => {
         </PageHeader>
       }
     >
-      <p></p>
+      <div>
+
+
+        <h2>Flashcards</h2>
+
+
+
+        <div id="footer">
+            {/* contains small previews of all flashcards */}
+        </div>
+      </div>
     </PageLayout>
   );
 };

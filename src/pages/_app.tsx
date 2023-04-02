@@ -1,24 +1,17 @@
 /* eslint-disable no-var */
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
-import { ThemeProvider, createTheme, responsiveFontSizes } from "@mui/material";
-import type { AppProps } from "next/app";
-import { RecoilRoot } from "recoil";
-import "./globals.css";
-import { api } from "~/utils/api";
 import { ClerkProvider } from "@clerk/nextjs";
+import { dark } from "@clerk/themes";
+import type { AppProps } from "next/app";
 import Head from "next/head";
 import { Toaster } from "react-hot-toast";
+import { RecoilRoot } from "recoil";
+import { api } from "~/utils/api";
 import "./globals.css";
-import { dark } from "@clerk/themes";
+import { Space_Grotesk } from "next/font/google";
 
-var theme = createTheme({
-  typography: {
-    fontFamily: "'Rubik', sans-serif;",
-  },
-});
-
-theme = responsiveFontSizes(theme);
+const space_grotesk = Space_Grotesk({ subsets: ["latin"] });
 
 function App({ Component, pageProps }: AppProps) {
   return (
@@ -29,10 +22,10 @@ function App({ Component, pageProps }: AppProps) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <RecoilRoot>
-        <ThemeProvider theme={theme}>
+        <div className={space_grotesk.className}>
           <Toaster position="bottom-center" />
           <Component {...pageProps} />
-        </ThemeProvider>
+        </div>
       </RecoilRoot>
     </ClerkProvider>
   );
