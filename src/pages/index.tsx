@@ -4,6 +4,7 @@ import { api } from "~/utils/api";
 
 const Home = () => {
   api.deck.getAllDecks.useQuery();
+  
   return (
     <div className=" min-h-screen px-8 pt-36 md:pt-10">
       <Userbadge />
