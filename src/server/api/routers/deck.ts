@@ -2,13 +2,17 @@ import { createTRPCRouter, privateProcedure } from "../trpc";
 import z from "zod";
 export const deckRouter = createTRPCRouter({
   createDeck: privateProcedure
-    .input(z.object({ title: z.string().min(1, {message:"Deck title cannot be empty."}) }))
+    .input(
+      z.object({
+        title: z.string().min(1, { message: "Deck title cannot be empty." }),
+      })
+    )
     .mutation(async ({ ctx, input }) => {
       const deck = await ctx.prisma.deck.create({
         data: { authorId: ctx.userId, title: input.title },
       });
 
-      return deck
+      return deck;
     }),
   getAllDecks: privateProcedure.query(async ({ ctx }) => {
     const decks = await ctx.prisma.deck.findMany({
