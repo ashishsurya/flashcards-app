@@ -9,7 +9,6 @@ const server = z.object({
   NODE_ENV: z.enum(["development", "test", "production"]),
   GITHUB_ID: z.string().min(1),
   GITHUB_SECRET: z.string().min(1),
-  NEXTAUTH_URL: z.string().url(),
   NEXTAUTH_SECRET: z.string().min(1),
 });
 
@@ -32,7 +31,6 @@ const processEnv = {
   NODE_ENV: process.env.NODE_ENV,
   GITHUB_ID: process.env.GITHUB_ID,
   GITHUB_SECRET: process.env.GITHUB_SECRET,
-  NEXTAUTH_URL: process.env.NEXTAUTH_URL,
   NEXTAUTH_SECRET: process.env.NEXTAUTH_SECRET,
   // NEXT_PUBLIC_CLIENTVAR: process.env.NEXT_PUBLIC_CLIENTVAR,
 };
