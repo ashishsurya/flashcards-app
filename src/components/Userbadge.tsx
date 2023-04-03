@@ -10,13 +10,13 @@ const Userbadge = () => {
   if (!isLoaded) return <LoadingPage />;
   if (!user) return <div>No user</div>;
   return (
-    <Menu as="div" className={"absolute right-10 top-10 h-12"}>
+    <Menu as="div" className={"absolute right-10 top-10 h-12 "}>
       <Menu.Button
         className={
           "flex items-center  justify-between  rounded-lg py-2 md:gap-4 md:bg-[--bg-level-4] md:px-4"
         }
       >
-        <p className="hidden font-light md:inline-flex">{user?.fullName}</p>
+        <p className="hidden font-light text-white md:inline-flex">{user?.fullName}</p>
         <Image
           src={user.profileImageUrl}
           alt=""

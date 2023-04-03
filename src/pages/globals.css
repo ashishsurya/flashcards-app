@@ -19,5 +19,5 @@ body {
 }
 
 button {
-  @apply rounded-lg bg-[--bg-level-9] px-4 py-2 font-medium tracking-wide hover:shadow-lg;
+  @apply rounded-lg bg-white text-black px-4 py-2 font-medium tracking-wide hover:shadow-lg;
 }

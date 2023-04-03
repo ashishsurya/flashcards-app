@@ -116,7 +116,7 @@ const CreateNewDeckModalContent = ({
         </button>
         <button
           onClick={createnewDeck}
-          className="!bg-black  bg-transparent  text-center hover:shadow-none"
+          className="   text-center hover:shadow-none"
         >
           {isPosting ? <LoadingSpinner /> : "Create"}
         </button>
